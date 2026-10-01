@@ -193,35 +193,9 @@
     <div id="product-grid" class="products"></div>
   </main>
 
+  <script src="inventory.js"></script>
   <script>
-    const defaultInventory = [
-      { id: 1, name: 'Classic Fashion Item', price: 450, originalPrice: 600, images: ['five 5.jpg'], category: 'accessories' },
-      { id: 2, name: 'Premium Outfit', price: 300, images: ['four 4.jpg'], category: 'women' },
-      { id: 3, name: 'Smart Attire', price: 1500, images: ['six 6.jpg'], category: 'men' },
-      { id: 4, name: 'Premium Suit', price: 1200, originalPrice: 2800, images: ['two 2.jpg'], category: 'men' },
-      { id: 5, name: 'Signature Street Look', price: 900, originalPrice: 1400, images: ['three 3.jpg'], category: 'women' }
-    ];
-
-    function getInventory() {
-      let inventory = [];
-      try {
-        inventory = JSON.parse(localStorage.getItem('koc_inventory')) || [];
-      } catch {
-        inventory = [];
-      }
-
-      const existingIds = new Set(inventory.map(product => product.id));
-      const missingDefaults = defaultInventory.filter(product => !existingIds.has(product.id));
-      if (!inventory.length) {
-        inventory = [...defaultInventory];
-      } else if (missingDefaults.length) {
-        inventory = [...inventory, ...missingDefaults];
-      }
-
-      localStorage.setItem('koc_inventory', JSON.stringify(inventory));
-      return inventory;
-    }
-
+    const inventory = loadKocInventory();
     const grid = document.getElementById('product-grid');
     const searchBox = document.getElementById('search-box');
     const menuToggle = document.getElementById('menu-toggle');
@@ -229,7 +203,7 @@
 
     function renderProducts(query = '') {
       const term = query.toLowerCase().trim();
-      const items = getInventory().filter(product => {
+      const items = inventory.filter(product => {
         const matches = !term || product.name.toLowerCase().includes(term) || product.category.toLowerCase().includes(term);
         return matches;
       });
@@ -241,10 +215,10 @@
 
       grid.innerHTML = items.map(product => `
         <article class="product">
-          <img src="${product.images[0]}" alt="${product.name}" />
+          <img src="${escapeKocHtml(product.images[0])}" alt="${escapeKocHtml(product.name)}" />
           <div class="product-details">
             <div class="product-header">
-              <h3>${product.name}</h3>
+              <h3>${escapeKocHtml(product.name)}</h3>
               <span class="price">ZMW${product.price}</span>
             </div>
             ${product.originalPrice ? `<span class="original-price">ZMW${product.originalPrice}</span>` : ''}

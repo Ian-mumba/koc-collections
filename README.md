@@ -1,6 +1,6 @@
 # K.O.C Collections
 
-The public storefront for K.O.C Collections. This repository contains the static HTML pages and image assets used by the website.
+The public storefront for K.O.C Collections. This repository contains the static HTML pages, browser-side JavaScript, and image assets used by the website.
 
 ## Run locally
 

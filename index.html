@@ -779,27 +779,9 @@ footer {
     </a>
   </div>
 </footer>
+    <script src="inventory.js"></script>
 <script>
-const defaultInventory = [
-  { id: 1, name: "Classic Fashion Item", price: 450, originalPrice: 600, images: ["five 5.jpg"], category: "accessories" },
-  { id: 2, name: "Premium Outfit", price: 300, images: ["four 4.jpg"], category: "women" },
-  { id: 3, name: "Smart Attire", price: 1500, images: ["six 6.jpg"], category: "men" },
-  { id: 4, name: "Premium Suit", price: 1200, originalPrice: 2800, images: ["two 2.jpg"], category: "men" }
-];
-let inventory = [];
-try {
-  inventory = JSON.parse(localStorage.getItem('koc_inventory')) || [];
-} catch {
-  inventory = [];
-}
-const existingIds = new Set(inventory.map(product => product.id));
-const missingDefaults = defaultInventory.filter(product => !existingIds.has(product.id));
-if (!inventory.length) {
-  inventory = [...defaultInventory];
-} else if (missingDefaults.length) {
-  inventory = [...inventory, ...missingDefaults];
-}
-localStorage.setItem('koc_inventory', JSON.stringify(inventory));
+    const inventory = loadKocInventory();
 let currentFilter = 'all';
 let searchQuery = '';
 const grid = document.getElementById('product-grid');
@@ -823,7 +805,7 @@ function renderProducts() {
     <article class="product">
       <div class="slider" id="slider-${index}">
         ${product.images.map((img, i) => `
-          <img src="${img}" alt="${product.name} image ${i + 1}" class="${i === 0 ? 'active' : ''}">
+          <img src="${escapeKocHtml(img)}" alt="${escapeKocHtml(product.name)} image ${i + 1}" class="${i === 0 ? 'active' : ''}">
         `).join('')}
         ${product.images.length > 1 ? `
           <button class="slider-btn prev" onclick="changeSlide(${index}, -1)">❮</button>
@@ -832,7 +814,7 @@ function renderProducts() {
       </div>
       <div class="product-details">
         <div class="product-meta">
-          <h3>${product.name}</h3>
+          <h3>${escapeKocHtml(product.name)}</h3>
           <div class="price">ZMW${product.price}</div>
         </div>
         <div class="price">

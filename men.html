@@ -127,12 +127,9 @@
     <div id="product-grid" class="products"></div>
   </main>
 
+  <script src="inventory.js"></script>
   <script>
-    const inventory = JSON.parse(localStorage.getItem('koc_inventory')) || [
-      { id: 3, name: 'Smart Attire', price: 1500, images: ['six 6.jpg'], category: 'men' },
-      { id: 4, name: 'Premium Suit', price: 1200, originalPrice: 2800, images: ['two 2.jpg'], category: 'men' }
-    ];
-
+    const inventory = loadKocInventory();
     const grid = document.getElementById('product-grid');
     const menuToggle = document.getElementById('menu-toggle');
     const navLinks = document.getElementById('nav-links');
@@ -143,10 +140,10 @@
     } else {
       grid.innerHTML = items.map(product => `
         <article class="product">
-          <img src="${product.images[0]}" alt="${product.name}" />
+          <img src="${escapeKocHtml(product.images[0])}" alt="${escapeKocHtml(product.name)}" />
           <div class="product-details">
             <div class="product-header">
-              <h3>${product.name}</h3>
+              <h3>${escapeKocHtml(product.name)}</h3>
               <span class="price">ZMW${product.price}</span>
             </div>
             ${product.originalPrice ? `<span class="original-price">ZMW${product.originalPrice}</span>` : ''}
