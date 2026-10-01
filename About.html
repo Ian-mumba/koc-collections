@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>KOC Collection - About</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            position: relative;
+            font-family: 'Poppins', sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: 
+                linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+                url('https://images.unsplash.com/photo-1521334884684-d80222895322') no-repeat center center/cover;
+        }
+        .page-header {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #ffffff;
+        }
+        .page-header img {
+            width: 45px;
+            height: 45px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 14px 30px rgba(0,0,0,0.3);
+        }
+        .page-header h1 {
+            font-size: 18px;
+            margin: 0;
+            letter-spacing: 0.1em;
+        }
+        .page-header p {
+            margin: 0;
+            font-size: 13px;
+            color: #dcdcdc;
+        }
+
+        .about-section {
+            backdrop-filter: blur(15px);
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 60px 50px;
+            max-width: 850px;
+            text-align: center;
+            color: #ffffff;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.4s ease;
+        }
+
+        .about-section:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 35px 80px rgba(0, 0, 0, 0.7);
+        }
+
+        .about-section h2 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ffcc70, #ff8177, #ff4e50);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+        }
+
+        .about-section p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: #f3f4f6;
+        }
+
+        .highlight {
+            font-weight: 600;
+            color: #ffcc70;
+        }
+
+        .taglines {
+            margin-top: 20px;
+        }
+
+        .taglines span {
+            display: inline-block;
+            margin: 10px 15px;
+            padding: 8px 18px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 30px;
+            background: linear-gradient(45deg, #ff8177, #ffcc70);
+            color: #111;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .taglines span:hover {
+            transform: scale(1.1);
+            background: linear-gradient(45deg, #ff4e50, #f9d423);
+            box-shadow: 0 8px 20px rgba(255, 150, 100, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .about-section {
+                padding: 40px 25px;
+            }
+
+            .about-section h2 {
+                font-size: 30px;
+            }
+
+            .about-section p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="page-header">
+        <img src="logo.jpg" alt="K.O.C logo">
+        <div>
+            <h1>K.O.C Collection</h1>
+            <p>About</p>
+        </div>
+    </header>
+
+    <div class="about-section">
+        <h2>KOC Collection</h2>
+
+        <p>
+            <span class="highlight">KOC Collection</span> is modern and stylish, offering premium quality goods for every customer.
+            We focus on <span class="highlight">simplicity, quality, and confidence</span>.
+            We believe less is more — clean designs, bold presence, and timeless fashion that defines your personality.
+        </p>
+
+        <div class="taglines">
+            <span>Design with Purpose</span>
+            <span>Crafted with Precision</span>
+            <span>Worn with Confidence</span>
+        </div>
+    </div>
+
+</body>
+</html>

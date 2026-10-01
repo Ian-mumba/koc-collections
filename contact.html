@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Header Contact Section</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Header Styling */
+        header {
+            background-color: #1c1c1c;
+            padding: 15px 20px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .logo-img {
+            width: 42px;
+            height: 42px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        /* Toggle Button */
+        .menu-toggle {
+            font-size: 24px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+        }
+
+        /* Hidden Contact Menu */
+        .contact-menu {
+            display: none;
+            background-color: #2c2c2c;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .contact-menu a {
+            display: block;
+            color: #ffffff;
+            text-decoration: none;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        .contact-menu a:hover {
+            color: #1877F2;
+        }
+
+        /* Active State */
+        .contact-menu.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="logo.jpg" alt="K.O.C logo" class="logo-img">
+            <span>Contact</span>
+        </div>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    </header>
+
+    <div class="contact-menu" id="contactMenu">
+        <a href="tel:+260965131551">📞 +260 965 131 551</a>
+        <a href="https://www.facebook.com/profile.php?id=61566395351256" target="_blank" rel="noopener noreferrer">📘 K.O.C Collections</a>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("contactMenu");
+            menu.classList.toggle("active");
+        }
+    </script>
+
+</body>
+</html>
