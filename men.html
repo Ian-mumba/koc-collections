@@ -129,16 +129,17 @@
 
   <script src="inventory.js"></script>
   <script>
-    const inventory = loadKocInventory();
     const grid = document.getElementById('product-grid');
     const menuToggle = document.getElementById('menu-toggle');
     const navLinks = document.getElementById('nav-links');
 
-    const items = inventory.filter(product => product.category === 'men');
-    if (!items.length) {
-      grid.innerHTML = '<p class="empty-state">No men products are available yet.</p>';
-    } else {
-      grid.innerHTML = items.map(product => `
+    grid.innerHTML = '<p class="empty-state">Loading products...</p>';
+    loadKocInventory().then(inventory => {
+      const items = inventory.filter(product => product.category === 'men');
+      if (!items.length) {
+        grid.innerHTML = '<p class="empty-state">No men products are available yet.</p>';
+      } else {
+        grid.innerHTML = items.map(product => `
         <article class="product">
           <img src="${escapeKocHtml(product.images[0])}" alt="${escapeKocHtml(product.name)}" />
           <div class="product-details">
@@ -149,8 +150,11 @@
             ${product.originalPrice ? `<span class="original-price">ZMW${product.originalPrice}</span>` : ''}
           </div>
         </article>
-      `).join('');
-    }
+        `).join('');
+      }
+    }).catch(() => {
+      grid.innerHTML = '<p class="empty-state">Products could not be loaded. Please refresh.</p>';
+    });
 
     menuToggle.addEventListener('click', () => {
       navLinks.classList.toggle('active');

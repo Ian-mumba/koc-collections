@@ -4,7 +4,19 @@ K.O.C Collections contains the public storefront and an optional Flask admin bac
 
 ## Run locally
 
-Open `index.html` in a browser, or serve this folder with any static web server.
+Serve this folder over HTTP so the browser can load `products.json`:
+
+```powershell
+python -m http.server 8000
+```
+
+Then open `http://localhost:8000/`.
+
+## Update products
+
+Open [Pages CMS](https://app.pagescms.org/) and sign in with the GitHub account that owns this repository. Install its GitHub App for this repository when prompted, then select `koc-collections` and open **Products**. Add or edit product names, prices, categories, and images; saving commits the catalog and uploaded images to GitHub. GitHub Pages redeploys the storefront from those files.
+
+The **Manage products** link in the site footer opens Pages CMS. The first visit requires GitHub sign-in and repository access authorization.
 
 To run the Flask admin backend, install `requirements.txt` and set these environment variables before starting `server.py`:
 
@@ -27,4 +39,4 @@ The admin accounts are created the first time the database is initialized. Keep 
 
 ## Publish with GitHub Pages
 
-In the repository settings, enable GitHub Pages for the `main` branch and the root folder to publish the static storefront. GitHub Pages does not run the Flask login or admin dashboard.
+GitHub Pages publishes the static storefront from the `main` branch and root folder. It does not run the optional Flask login or admin dashboard. The database and session secret remain private runtime configuration.

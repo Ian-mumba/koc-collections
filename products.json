@@ -1,0 +1,35 @@
+[
+  {
+    "name": "Classic Fashion Item",
+    "price": 450,
+    "originalPrice": 600,
+    "images": ["five 5.jpg"],
+    "category": "accessories"
+  },
+  {
+    "name": "Premium Outfit",
+    "price": 300,
+    "images": ["four 4.jpg"],
+    "category": "women"
+  },
+  {
+    "name": "Smart Attire",
+    "price": 1500,
+    "images": ["six 6.jpg"],
+    "category": "men"
+  },
+  {
+    "name": "Premium Suit",
+    "price": 1200,
+    "originalPrice": 2800,
+    "images": ["two 2.jpg"],
+    "category": "men"
+  },
+  {
+    "name": "Signature Street Look",
+    "price": 900,
+    "originalPrice": 1400,
+    "images": ["three 3.jpg"],
+    "category": "women"
+  }
+]

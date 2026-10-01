@@ -195,13 +195,14 @@
 
   <script src="inventory.js"></script>
   <script>
-    const inventory = loadKocInventory();
+    let inventory = null;
     const grid = document.getElementById('product-grid');
     const searchBox = document.getElementById('search-box');
     const menuToggle = document.getElementById('menu-toggle');
     const navLinks = document.getElementById('nav-links');
 
     function renderProducts(query = '') {
+      if (!inventory) return;
       const term = query.toLowerCase().trim();
       const items = inventory.filter(product => {
         const matches = !term || product.name.toLowerCase().includes(term) || product.category.toLowerCase().includes(term);
@@ -235,7 +236,13 @@
       navLinks.classList.toggle('active');
     });
 
-    renderProducts();
+    grid.innerHTML = '<p class="empty-state">Loading products...</p>';
+    loadKocInventory().then(products => {
+      inventory = products;
+      renderProducts(searchBox.value);
+    }).catch(() => {
+      grid.innerHTML = '<p class="empty-state">Products could not be loaded. Please refresh.</p>';
+    });
   </script>
 </body>
 </html>

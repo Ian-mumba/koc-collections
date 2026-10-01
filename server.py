@@ -26,6 +26,7 @@ PUBLIC_FILES = {
     "logo.jpg",
     "men.html",
     "products.html",
+    "products.json",
     "six 6.jpg",
     "three 3.jpg",
     "two 2.jpg",
@@ -135,7 +136,7 @@ def logout():
 
 @app.route("/<path:filename>")
 def serve_public_file(filename):
-    if filename in PUBLIC_FILES:
+    if filename in PUBLIC_FILES or filename.startswith("product-images/"):
         return send_from_directory(BASE_DIR, filename)
     return redirect(url_for("home"))
 

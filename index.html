@@ -778,10 +778,11 @@ footer {
       <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" class="social-icon"> K.O.C Collections
     </a>
   </div>
+  <a href="admin.html" class="admin-link">Manage products</a>
 </footer>
     <script src="inventory.js"></script>
 <script>
-    const inventory = loadKocInventory();
+    let inventory = null;
 let currentFilter = 'all';
 let searchQuery = '';
 const grid = document.getElementById('product-grid');
@@ -791,6 +792,7 @@ const ctaButton = document.getElementById('cta-view');
 const navToggle = document.getElementById('menu-toggle');
 const navLinks = document.getElementById('nav-links');
 function renderProducts() {
+  if (!inventory) return;
   const query = searchQuery.toLowerCase().trim();
   const filtered = inventory.filter(product => {
     const matchesFilter = currentFilter === 'all' || product.category === currentFilter;
@@ -861,7 +863,13 @@ window.addEventListener('resize', () => {
     navToggle.setAttribute('aria-expanded', 'false');
   }
 });
-renderProducts();
+grid.innerHTML = '<p class="empty-state">Loading products...</p>';
+loadKocInventory().then(products => {
+  inventory = products;
+  renderProducts();
+}).catch(() => {
+  grid.innerHTML = '<p class="empty-state">Products could not be loaded. Please refresh.</p>';
+});
 </script>
 </body>
 </html>
