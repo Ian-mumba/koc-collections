@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>K.O.C Admin Dashboard</title>
+  <style>
+    :root {
+      --bg: #06070f;
+      --panel: rgba(255,255,255,0.06);
+      --text: #f5f5f7;
+      --muted: #9fa2b8;
+      --accent: #ff4d88;
+      --border: rgba(255,255,255,0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+      background: #06070f;
+      color: var(--text);
+    }
+    .wrap {
+      max-width: 960px;
+      margin: 60px auto;
+      padding: 24px;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.22);
+    }
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    h1 {
+      margin: 0;
+      color: var(--accent);
+    }
+    .logout {
+      color: white;
+      text-decoration: none;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      padding: 10px 16px;
+      border-radius: 999px;
+    }
+    .status {
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+    .admins {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .admin-item {
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: rgba(255,255,255,0.02);
+    }
+    .label {
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="topbar">
+        <h1>Admin Dashboard</h1>
+        <a class="logout" href="/logout">Log out</a>
+      </div>
+
+      <div class="status">Logged in as: <strong>{{ current_user }}</strong></div>
+
+      <div class="label">Authorized Admin Accounts</div>
+      <div class="admins">
+        {% for admin in admins %}
+          <div class="admin-item">{{ admin["username"] }}</div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</body>
+</html>

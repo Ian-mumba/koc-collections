@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>K.O.C Admin Login</title>
+  <style>
+    :root {
+      --bg: #06070f;
+      --panel: rgba(255,255,255,0.06);
+      --text: #f5f5f7;
+      --muted: #9fa2b8;
+      --accent: #ff4d88;
+      --border: rgba(255,255,255,0.12);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle at top, rgba(255,77,136,0.18), transparent 25%), #06070f;
+      color: var(--text);
+    }
+    .panel {
+      width: min(420px, 90vw);
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 30px 24px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+    }
+    h1 {
+      margin: 0 0 12px;
+      font-size: 1.9rem;
+      text-align: center;
+      color: var(--accent);
+    }
+    p {
+      margin: 0 0 24px;
+      text-align: center;
+      color: var(--muted);
+    }
+    form {
+      display: grid;
+      gap: 16px;
+    }
+    label {
+      display: grid;
+      gap: 8px;
+      color: var(--text);
+      font-weight: 600;
+    }
+    input {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      font-size: 1rem;
+    }
+    button {
+      border: none;
+      border-radius: 12px;
+      padding: 14px 20px;
+      background: linear-gradient(135deg, var(--accent), #ff7fba);
+      color: white;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .error {
+      color: #ff8aa7;
+      background: rgba(255,77,136,0.08);
+      border: 1px solid rgba(255,77,136,0.2);
+      border-radius: 12px;
+      padding: 10px 12px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="panel">
+    <h1>K.O.C Admin</h1>
+    <p>Restricted access for approved admins only.</p>
+
+    {% if error %}
+      <div class="error">{{ error }}</div>
+    {% endif %}
+
+    <form method="POST" action="/login">
+      <label>
+        Username
+        <input type="text" name="username" required placeholder="Enter username" />
+      </label>
+      <label>
+        Password
+        <input type="password" name="password" required placeholder="Enter password" />
+      </label>
+      <button type="submit">Login</button>
+    </form>
+  </div>
+</body>
+</html>

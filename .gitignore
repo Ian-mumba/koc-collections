@@ -4,9 +4,6 @@ __pycache__/
 *.py[cod]
 .env
 .env.*
-admin.html
 admin_data.db
-server.py
-templates/
 racing_game/
 main.cpp
