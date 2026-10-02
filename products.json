@@ -3,33 +3,51 @@
     "name": "Classic Fashion Item",
     "price": 450,
     "originalPrice": 600,
-    "images": ["five 5.jpg"],
-    "category": "accessories"
+    "category": "accessories",
+    "images": [
+      "five 5.jpg"
+    ]
   },
   {
     "name": "Premium Outfit",
     "price": 300,
-    "images": ["four 4.jpg"],
-    "category": "women"
+    "category": "women",
+    "images": [
+      "four 4.jpg"
+    ]
   },
   {
     "name": "Smart Attire",
     "price": 1500,
-    "images": ["six 6.jpg"],
-    "category": "men"
+    "category": "men",
+    "images": [
+      "six 6.jpg"
+    ]
   },
   {
     "name": "Premium Suit",
     "price": 1200,
     "originalPrice": 2800,
-    "images": ["two 2.jpg"],
-    "category": "men"
+    "category": "men",
+    "images": [
+      "two 2.jpg"
+    ]
   },
   {
     "name": "Signature Street Look",
     "price": 900,
     "originalPrice": 1400,
-    "images": ["three 3.jpg"],
-    "category": "women"
+    "category": "women",
+    "images": [
+      "three 3.jpg"
+    ]
+  },
+  {
+    "name": "Jean",
+    "price": 200,
+    "category": "men",
+    "images": [
+      "product-images/IMG-20261002-WA0058-1.jpg"
+    ]
   }
 ]
